@@ -421,7 +421,9 @@ module ActiveRecord
       end
 
       def load_schema_current(format = ActiveRecord::Base.schema_format, file = nil, environment = env)
+        p ['TEST1', environment, env]
         each_current_configuration(environment) { |configuration, spec_name, env|
+          p ['TEST2', configuration, spec_name, env]
           load_schema(configuration, format, file, env, spec_name)
         }
         ActiveRecord::Base.establish_connection(environment.to_sym)
